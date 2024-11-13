@@ -78,21 +78,28 @@ function addSubject(subject) {
   console.log(`${subject.name} has been added to ${this.name}'s subjects.`);
 } // #9
 
+function quitSubject(subject) {
+  this.subjects = this.subjects.filter((s) => s.name !== subject.name);
+  console.log(`${this.name} has quit the subject ${subject.name}.`);
+}
+
 /* #3. Skapa fem stycken studenter, där namnet på studenten motsvara variabeln. Egenskaperna ska vara name, age, gender och subjects som en tom array. */
 let nicholas = {
   name: "Nicholas",
   age: 30,
   gender: "Male",
-  subjects: [],
+  subjects: [engelska],
   addSubject,
+  quitSubject,
 };
 
 let wictor = {
   name: "Wictor",
   age: 29,
   gender: "Male",
-  subjects: [],
+  subjects: [engelska],
   addSubject,
+  quitSubject,
 };
 
 let peter = {
@@ -101,6 +108,7 @@ let peter = {
   gender: "Male",
   subjects: [],
   addSubject,
+  quitSubject,
 };
 
 let hannah = {
@@ -109,14 +117,16 @@ let hannah = {
   gender: "Female",
   subjects: [],
   addSubject,
+  quitSubject,
 };
 
-let ophelia = {
-  name: "Ophelia",
-  age: 39,
-  gender: "Female",
-  subjects: [],
+let oskar = {
+  name: "Oskar",
+  age: 21,
+  gender: "Male",
+  subjects: [engelska],
   addSubject,
+  quitSubject,
 };
 
 /* #4. Skapa två stycken lärare med namnet som variabel och egenskaperna name och subjects som en tom array. ( [] ) */
@@ -124,19 +134,24 @@ let niklas = {
   name: "Niklas",
   subjects: [],
   addSubject,
+  quitSubject,
 };
 
 let lars = {
   name: "Lars",
   subjects: [],
   addSubject,
+  quitSubject,
 };
 
 // #10
 teknikhögskolan.addTeacher(niklas);
 engelska.enlistToSubject(nicholas);
-nicholas.addSubject(engelska);
-teknikhögskolan.relegateStudent(nicholas); // #11
+engelska.enlistToSubject(oskar);
+teknikhögskolan.addStudent(nicholas);
+engelska.students.push(nicholas);
+engelska.students.push(wictor);
+nicholas.quitSubject(engelska);
 
 /* #5. Skriv en kodrad där du lägger till ett ämne i en lärares ämnesarray. push() eller unshift() Kommer du ihåg skillnaden på dem två?
 Skriv sen ut både läraren och ämnet du valde i konsolen och inspektera dem.
