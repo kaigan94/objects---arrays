@@ -10,16 +10,33 @@ const teknikhögskolan = {
   students: [],
   teachers: [],
 
-  // #9
+  relegateStudent(student) {
+    this.students = this.students.filter((s) => s.name !== student.name);
+    console.log(`${student.name} has been removed from ${this.name}.`);
+  }, // #11
+
+  fireTeacher(teacher) {
+    this.teachers = this.teachers.filter((t) => t.name !== teacher.name);
+    console.log(`${teacher.name} has been fired from ${this.name}.`);
+  }, // #11
+
   addTeacher(teacher) {
     this.teachers.push(teacher);
     console.log(`${teacher.name} has been added as a teacher.`);
-  },
+  }, // #9
 
-  // #9
   addStudent(student) {
     this.students.push(student);
     console.log(`${student.name} has been enrolled as a student.`);
+  }, // #9
+
+  removeTeacher(teacher) {
+    if (this.teachers.name === teacher.name) {
+      delete this.teachers;
+      console.log(
+        `${teacher.name} has been removed as a teacher from ${this.name}.`
+      );
+    } // #11
   },
 };
 
@@ -56,11 +73,10 @@ const programmering = {
   }, // #9
 };
 
-// #9
 function addSubject(subject) {
   this.subjects.push(subject);
   console.log(`${subject.name} has been added to ${this.name}'s subjects.`);
-}
+} // #9
 
 /* #3. Skapa fem stycken studenter, där namnet på studenten motsvara variabeln. Egenskaperna ska vara name, age, gender och subjects som en tom array. */
 let nicholas = {
@@ -68,7 +84,7 @@ let nicholas = {
   age: 30,
   gender: "Male",
   subjects: [],
-  addSubject, // #9
+  addSubject,
 };
 
 let wictor = {
@@ -76,7 +92,7 @@ let wictor = {
   age: 29,
   gender: "Male",
   subjects: [],
-  addSubject, // #9
+  addSubject,
 };
 
 let peter = {
@@ -84,7 +100,7 @@ let peter = {
   age: 31,
   gender: "Male",
   subjects: [],
-  addSubject, // #9
+  addSubject,
 };
 
 let hannah = {
@@ -92,7 +108,7 @@ let hannah = {
   age: 23,
   gender: "Female",
   subjects: [],
-  addSubject, // #9
+  addSubject,
 };
 
 let ophelia = {
@@ -100,27 +116,27 @@ let ophelia = {
   age: 39,
   gender: "Female",
   subjects: [],
-  addSubject, //#9
+  addSubject,
 };
 
 /* #4. Skapa två stycken lärare med namnet som variabel och egenskaperna name och subjects som en tom array. ( [] ) */
 let niklas = {
   name: "Niklas",
   subjects: [],
-  addSubject, // #9
+  addSubject,
 };
 
 let lars = {
   name: "Lars",
   subjects: [],
-  addSubject, // #9
+  addSubject,
 };
 
-// #9
+// #10
 teknikhögskolan.addTeacher(niklas);
-teknikhögskolan.addTeacher(lars);
 engelska.enlistToSubject(nicholas);
 nicholas.addSubject(engelska);
+teknikhögskolan.relegateStudent(nicholas); // #11
 
 /* #5. Skriv en kodrad där du lägger till ett ämne i en lärares ämnesarray. push() eller unshift() Kommer du ihåg skillnaden på dem två?
 Skriv sen ut både läraren och ämnet du valde i konsolen och inspektera dem.
@@ -149,20 +165,21 @@ console.log(updatedTeacher);
 
 /* #8. Varför ha en fristående funktion som lägger till ämne till en lärare?
 Varför inte bara lägga till en funktion (alltså en metod eftersom funktionen då är kopplad till ett specifikt objekt) i lärarnas objekt som en egenskap? */
-/* Det är för att man ska kunna ändra i funktionen senare. */
+// Det är för att man ska kunna ändra i funktionen senare
 
 /* #9. Skapa följande metoder (Någon eller ett par av metoderna kan förekomma flera gånger fast på olika objekt med olika logik)
 och lägg in de i rätt typ av objekt: addTeacher, enlistToSubject, addStudent, addSubject */
-// CHECK! //
+// CHECK!
 
 /* #10. Prova att leka runt med alla de skapade metoderna i konsolen och försöka lägga till i de olika objekten. Skriv ut objekten hela tiden och inspektera dem.
 Kan du tänka dig någon likhet med ett riktigt adminprogram för en skola där en admin till exempel skriver ut en lista på alla ämnen
 för att se vilka respektive lärare som är ansvariga för respektive kurs. */
+// CHECK!
 
 /* #11. Skapa fler metoder, quitSubject, removeTeacher, relegateStudent, fireTeacher. I vilka objekt hör dessa metoder hemma?
-Och om vi till exempel sparkar en lärare, så måste vi ju ta bort lärarens koppling med skolan, och ämnet/ämnerna som läraren undervisar i.
+Och om vi till exempel sparka en lärare, så måste vi ju ta bort lärarens koppling med skolan, och ämnet/ämnerna som läraren undervisar i.
 Hur löser vi detta i våra metoder, nu får vi börja tänka oss för lite. */
-
+// CHECK!
 
 /* #12. Lek runt med dessa metoder i konsolen. Lägg till lite här och ta bort lite där. Rätt smidigt va? */
 
