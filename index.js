@@ -73,14 +73,39 @@ const programmering = {
   }, // #9
 };
 
+// fristående funktioner
 function addSubject(subject) {
   this.subjects.push(subject);
   console.log(`${subject.name} has been added to ${this.name}'s subjects.`);
-} // #9
+}
 
 function quitSubject(subject) {
   this.subjects = this.subjects.filter((s) => s.name !== subject.name);
   console.log(`${this.name} has quit the subject ${subject.name}.`);
+}
+
+function displayAllStudents(school) {
+  for (let key in school.students) {
+    console.log(school.students[key]);
+  } // loopar genom alla studenter i skolan
+}
+
+function displayAllSubjectsOfStudent(student) {
+  student.subjects.forEach((subject) => {
+    console.log(subject.name);
+  }); // visar alla ämnen för en specifik student
+}
+
+function displayAllStudentsEnlistedToSubject(subject) {
+  subject.students.forEach((student) => {
+    console.log(student.name);
+  }); // visar alla studenter som är inskrivna i ett specifikt ämne
+}
+
+function displayAllTeachers(school) {
+  school.teachers.forEach((teacher) => {
+    console.log(teacher.name);
+  }); // loopar genom alla lärare i skolan
 }
 
 /* #3. Skapa fem stycken studenter, där namnet på studenten motsvara variabeln. Egenskaperna ska vara name, age, gender och subjects som en tom array. */
@@ -144,7 +169,6 @@ let lars = {
   quitSubject,
 };
 
-// #10
 teknikhögskolan.addTeacher(niklas);
 engelska.enlistToSubject(nicholas);
 engelska.enlistToSubject(oskar);
@@ -197,10 +221,12 @@ Hur löser vi detta i våra metoder, nu får vi börja tänka oss för lite. */
 // CHECK!
 
 /* #12. Lek runt med dessa metoder i konsolen. Lägg till lite här och ta bort lite där. Rätt smidigt va? */
+// Japp!
 
 /* #13. Ny bygger vi på det lite. För att undvika att behöva anropa massa metoder i konsolen när vi startar om programmet
 (vilket händer vid varje redigering av script-filen) så kan vi längst ner i script-filen skapa (alltså den koden läses in sist hela tiden)
 logik för att koppla några studenter till skolan, några ämnen till studenterna och några lärare till ämnena och så vidare. Skapa sån logik nu. */
+// Klart
 
 /* #14. Skapa en funktion (OBS, en fristående funktion) , displayAllStudents som loopar igenom skolans alla studenter med hjälp av en for-loop.
 Tänk på att en vanlig for..of loop inte fungerar här (varför är det så?). Vi måste använda en for..IN loop, och en for..in loop låter oss loopa igenom ett
