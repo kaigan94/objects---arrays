@@ -9,6 +9,14 @@ const teknikhögskolan = {
   city: "Lund",
   students: [],
   teachers: [],
+  grades: [],
+
+  addGrade(grade) {
+    this.grades.push(grade);
+    console.log(
+      `Grade ${grade.value} added for ${grade.student.name} in ${grade.subject.name} by ${grade.teacher.name}`
+    );
+  },
 
   relegateStudent(student) {
     this.students = this.students.filter((s) => s.name !== student.name);
@@ -46,11 +54,10 @@ const engelska = {
   name: "Engelska",
   students: [], // empty array
   teachers: {}, // empty object
-
   enlistToSubject(student) {
     this.students.push(student);
     console.log(`${student.name} has been enlisted to ${this.name}.`);
-  }, // #9
+  },
 };
 
 const matematik = {
@@ -109,16 +116,22 @@ function displayAllTeachers(school) {
 }
 
 /* #3. Skapa fem stycken studenter, där namnet på studenten motsvara variabeln. Egenskaperna ska vara name, age, gender och subjects som en tom array. */
-let nicholas = {
+const nicholas = {
   name: "Nicholas",
   age: 30,
   gender: "Male",
   subjects: [engelska],
-  addSubject,
-  quitSubject,
+  addSubject(subject) {
+    this.subjects.push(subject);
+    console.log(`${subject.name} has been added to ${this.name}'s subjects.`);
+  },
+  quitSubject(subject) {
+    this.subjects = this.subjects.filter((s) => s.name !== subject.name);
+    console.log(`${this.name} has quit the subject ${subject.name}.`);
+  },
 };
 
-let wictor = {
+const wictor = {
   name: "Wictor",
   age: 29,
   gender: "Male",
@@ -127,7 +140,7 @@ let wictor = {
   quitSubject,
 };
 
-let peter = {
+const peter = {
   name: "Peter",
   age: 31,
   gender: "Male",
@@ -136,7 +149,7 @@ let peter = {
   quitSubject,
 };
 
-let hannah = {
+const hannah = {
   name: "Hannah",
   age: 23,
   gender: "Female",
@@ -145,7 +158,7 @@ let hannah = {
   quitSubject,
 };
 
-let oskar = {
+const oskar = {
   name: "Oskar",
   age: 21,
   gender: "Male",
@@ -155,18 +168,38 @@ let oskar = {
 };
 
 /* #4. Skapa två stycken lärare med namnet som variabel och egenskaperna name och subjects som en tom array. ( [] ) */
-let niklas = {
+const niklas = {
   name: "Niklas",
   subjects: [],
-  addSubject,
-  quitSubject,
+  addSubject(subject) {
+    this.subjects.push(subject);
+    console.log(`${subject.name} has been added to ${this.name}'s subjects.`);
+  },
+  quitSubject(subject) {
+    this.subjects = this.subjects.filter((s) => s.name !== subject.name);
+    console.log(`${this.name} has quit the subject ${subject.name}.`);
+  },
 };
 
-let lars = {
+const lars = {
   name: "Lars",
   subjects: [],
-  addSubject,
-  quitSubject,
+  addSubject(subject) {
+    this.subjects.push(subject);
+    console.log(`${subject.name} has been added to ${this.name}'s subjects.`);
+  },
+  quitSubject(subject) {
+    this.subjects = this.subjects.filter((s) => s.name !== subject.name);
+    console.log(`${this.name} has quit the subject ${subject.name}.`);
+  },
+};
+
+const gradeExample = {
+  value: "A",
+  date: "2024-11-14",
+  subject: engelska,
+  student: nicholas,
+  teacher: niklas,
 };
 
 teknikhögskolan.addTeacher(niklas);
@@ -176,6 +209,8 @@ teknikhögskolan.addStudent(nicholas);
 engelska.students.push(nicholas);
 engelska.students.push(wictor);
 nicholas.quitSubject(engelska);
+teknikhögskolan.addGrade(gradeExample);
+console.log(teknikhögskolan.grades);
 
 /* #5. Skriv en kodrad där du lägger till ett ämne i en lärares ämnesarray. push() eller unshift() Kommer du ihåg skillnaden på dem två?
 Skriv sen ut både läraren och ämnet du valde i konsolen och inspektera dem.
@@ -233,10 +268,13 @@ Tänk på att en vanlig for..of loop inte fungerar här (varför är det så?). 
 objekts egenskaper (även kallad nycklar, keys) och på så sätt kunna koppa åt alla egenskaperna värde. */
 // Syntax:
 // for(keys in medieinstitutet.students) {/*logik för att printa ut studenterna*/};
+// Klart
 
 /* #15. Skapa nu fler funktioner, displayAllSubjectsOfStudent(student), displayAllStudentsEnlistedToSubject(subject), displayAllTeachers.
 Varje funktion bör ha något returvärde. */
+// Klart
 
 /* #16. Bygg ut med ett ytterligare typ av objekt, lägg till objekt som handlar om betyg.
 Vilka egenskaper ska dessa ha? Vilka metoder kan behövas i dessa betygsobjekt? Hur ska relationen mellan de andra objekten vara?
 Vilka metoder bör finnas i de andra typerna av objekt som behandlar betyg? Försöka lösa detta och inspektera och lek runt med det i konsolen. */
+// Check
